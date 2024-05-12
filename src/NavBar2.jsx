@@ -1,8 +1,17 @@
-import { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "./AuthProvider";
 
 
 const NavBar2 = () => {
+  const {user}= useContext(AuthContext)
+  if(user){
+    console.log('lalala ', user.email)
+  }
+  else{
+    console.log('no user')
+  }
+  //console.log('lalala ', user.email)
 
     const [theme, setTheme] = useState(localStorage.getItem("theme")?localStorage.getItem("theme"):"light")
 
@@ -36,6 +45,10 @@ const NavBar2 = () => {
                 <li ><NavLink to='/addSpot'>Add Tourist Spot</NavLink></li>
                 
                 <li ><NavLink to='/userSpot'>My Tourist Spot</NavLink></li>
+                {
+                  user?(<li><Link to={`/applied/${user.email}`}>Applied Jobs</Link></li>):(<li>Applied Jobs</li>)
+                }
+                
       </ul>
     </div>
    

@@ -21,6 +21,7 @@ import ErrorPage from './ErrorPage.jsx';
 import AddJob from './AddJob.jsx';
 import AllJobs from './AllJobs.jsx';
 import JobDetails from './JobDetails.jsx';
+import AppliedJobs from './AppliedJobs.jsx';
 
 const router = createBrowserRouter([
   {
@@ -68,7 +69,11 @@ const router = createBrowserRouter([
         element:<PrivateRoute><JobDetails></JobDetails></PrivateRoute>,
         loader: ({params})=> fetch(`http://localhost:5000/jobs/${params.id}`)
       },
-    
+      {
+        path:'/applied/:email',
+        element:<PrivateRoute><AppliedJobs></AppliedJobs></PrivateRoute>,
+        loader: ({params})=> fetch(`http://localhost:5000/applied/${params.email}`)
+      },
 
       
     ]
