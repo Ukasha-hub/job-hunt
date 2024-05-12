@@ -14,12 +14,13 @@ import Register from './Register.jsx';
 import UserTouristSpot from './UserTouristSpot.jsx';
 import UpdateTouristSpot from './UpdateTouristSpot.jsx';
 import PrivateRoute from './PrivateRoute.jsx';
-import SpotDetails from './SpotDetails.jsx';
+
 import Home from './Home.jsx';
 
 import ErrorPage from './ErrorPage.jsx';
 import AddJob from './AddJob.jsx';
 import AllJobs from './AllJobs.jsx';
+import JobDetails from './JobDetails.jsx';
 
 const router = createBrowserRouter([
   {
@@ -64,7 +65,7 @@ const router = createBrowserRouter([
       },
       {
         path:'/details/:id',
-        element:<PrivateRoute><SpotDetails></SpotDetails></PrivateRoute>,
+        element:<PrivateRoute><JobDetails></JobDetails></PrivateRoute>,
         loader: ({params})=> fetch(`http://localhost:5000/jobs/${params.id}`)
       },
     
