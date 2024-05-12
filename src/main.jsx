@@ -10,7 +10,7 @@ import SignIn from './SignIn.jsx';
 import AuthProvider from './AuthProvider.jsx';
 import Register from './Register.jsx';
 
-import AllTouristSpot from './AllTouristSpot.jsx';
+
 import UserTouristSpot from './UserTouristSpot.jsx';
 import UpdateTouristSpot from './UpdateTouristSpot.jsx';
 import PrivateRoute from './PrivateRoute.jsx';
@@ -19,6 +19,7 @@ import Home from './Home.jsx';
 
 import ErrorPage from './ErrorPage.jsx';
 import AddJob from './AddJob.jsx';
+import AllJobs from './AllJobs.jsx';
 
 const router = createBrowserRouter([
   {
@@ -48,7 +49,7 @@ const router = createBrowserRouter([
       },
       {
         path:'/allSpot',
-        element:<AllTouristSpot></AllTouristSpot>,
+        element:<AllJobs></AllJobs>,
         loader: ()=> fetch('http://localhost:5000/jobs')
       },
       {
