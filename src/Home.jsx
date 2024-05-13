@@ -11,7 +11,7 @@ import { Helmet } from 'react-helmet';
 // import required modules
 
 import { Link, useLoaderData } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import {  useState } from 'react';
 
 import { ImPriceTag } from "react-icons/im";
 import { FaUserGroup } from "react-icons/fa6";
@@ -38,15 +38,7 @@ const Home = () => {
    console.log(setFirstSixSpots)
 
 
-   const [country, setCountry]= useState([]);
 
-    
-
-    useEffect(()=> {
-        fetch("https://10th-project-server.vercel.app/countries")
-        .then(res => res.json())
-        .then(data=> setCountry(data))
-    }, [])
 
     //console.log(country)
    
@@ -113,25 +105,7 @@ const Home = () => {
               </h1>
              </div>
 
-              <div className='grid lg:grid-cols-3 md:grid-cols-2  grid-cols-1 gap-10 justify-center content-center justify-items-center p-5'>
-                {
-                    country.map(country=>
-                        <div key={country._Id}>
-                              <div className="card lg:w-[30vw] w-[350px] bg-base-100 shadow-xl image-full">
-                                <figure><img className='h-[100px]' src={country.image} alt="Shoes" /></figure>
-                                <div className="card-body">
-                                    <h2 className="card-title">{country.name}</h2>
-                                    <p>{country.description}</p>
-                                    <div className="card-actions justify-end">
-                                    <Link to={`/countries/${country._id}`}><button className="btn btn-primary">See tourist spots</button></Link>
-                                    
-                                    </div>
-                                </div>
-                                </div>
-                        </div>
-                        )
-                }
-              </div>
+             
 
 
               <div className=''>

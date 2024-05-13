@@ -46,8 +46,12 @@ const NavBar2 = () => {
                 
                 <li ><NavLink to='/userSpot'>My Tourist Spot</NavLink></li>
                 {
-                  user?(<li><Link to={`/applied/${user.email}`}>Applied Jobs</Link></li>):(<li>Applied Jobs</li>)
+                  user?
+                  (<li><NavLink to={`/applied/${user.email}`}>Applied Jobs</NavLink></li>)
+                  :
+                  (<li>Applied Jobs</li>)
                 }
+                <li><NavLink to='/userSpot'>Blog post</NavLink></li>
                 
       </ul>
     </div>
