@@ -108,7 +108,7 @@ const Navbar3 = () => {
 		<ul  className="pt-2 pb-4 space-y-1 text-sm flex lg:flex-row md:flex-row flex-col  justify-evenly menu menu-horizontal px-1">
         <li ><NavLink to='/'>Home</NavLink></li>
                 <li ><NavLink to='/allSpot'>All Jobs</NavLink></li>
-                <li ><NavLink to='/userSpot'>blog</NavLink></li>
+                <li ><NavLink to='/Blog'>Blogs</NavLink></li>
                 <li ><NavLink to='/addSpot'>Add Jobs</NavLink></li>
                 
                 

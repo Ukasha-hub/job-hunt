@@ -25,6 +25,7 @@ import AppliedJobs from './AppliedJobs.jsx';
 import UserJob from './UserJob.jsx';
 import UpdateJob from './UpdateJob.jsx';
 import UpdateProfile from './UpdateProfile.jsx';
+import Blog from './Blog.jsx';
 
 const router = createBrowserRouter([
   {
@@ -80,6 +81,11 @@ const router = createBrowserRouter([
       {
         path:'/updateProfile',
         element:<PrivateRoute><UpdateProfile></UpdateProfile></PrivateRoute>,
+        
+      },
+      {
+        path:'/Blog',
+        element:<Blog></Blog>,
         
       },
 

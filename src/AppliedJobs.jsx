@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
+import { PDFViewer, PDFDownloadLink } from '@react-pdf/renderer';
+import MyDocument from "./MyDocument";
 
 const AppliedJobs = () => {
     const jobs = useLoaderData();
@@ -39,6 +41,7 @@ const AppliedJobs = () => {
                                     <th className="p-3">Applying Date</th>
                                     <th className="p-3">Job category</th>
                                     <th className="p-3">CV link</th>
+                                    <th className="p-3">Action</th>
                                 </tr>
                             </thead>
                             <tbody className="border-b dark:bg-gray-50 dark:border-gray-300">
@@ -55,6 +58,15 @@ const AppliedJobs = () => {
                                         </td>
                                         <td className="px-3 py-2">
                                             <p>{job.cv}</p>
+                                        </td>
+                                        <td className="px-3 py-2">
+                                        
+                                                
+                                                <PDFDownloadLink document={<MyDocument />} fileName="example.pdf">
+                                                {({ blob, url, loading, error }) =>
+                                                    loading ? 'Loading document...' : <button className="btn border-black">  Download Summery </button>
+                                                }
+                                                </PDFDownloadLink>
                                         </td>
                                     </tr>
                                 ))}
