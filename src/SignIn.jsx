@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { Link,  useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "./AuthProvider";
-import { GithubAuthProvider, GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
+import {  GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
 import { Helmet } from 'react-helmet';
 import { ToastContainer, toast } from 'react-toastify';
 import { useState } from "react";
@@ -11,7 +11,7 @@ import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
 
 import { FaGoogle } from "react-icons/fa";
-import { FaGithub } from "react-icons/fa";
+
 import Swal from "sweetalert2";
 
 
@@ -23,7 +23,7 @@ const SignIn = () => {
    const location= useLocation()
    const navigate= useNavigate()
    const googleProvider= new GoogleAuthProvider()
-   const githubProvider= new GithubAuthProvider()
+   
 
    const [seePass, setSeePass]= useState(false)
 
@@ -44,26 +44,7 @@ const SignIn = () => {
         })
    }
 
-   const handleGithubSignIn=()=>{
-        signInWithPopup(auth, githubProvider)
-        .then(result=>{
-            const user=result.user
-            console.log(user)
-            Swal.fire({
-                title: " Successful!",
-                text: "You have logged in!",
-                icon: "success"
-              });
-            
-            navigate(location?.state? location.state: '/')
-            
-        })
-        .catch(error=>{
-            console.log(error, error.message)
-            toast.error(error.message);
-        })
-
-   }
+  
 
     const handleLogin= e=>{
         e.preventDefault();
@@ -115,7 +96,7 @@ const SignIn = () => {
              <div className="divider text-white">Or, Sign in with:</div>
              <div className="flex flex-col gap-2 justify-center items-center content-center">
              <button className="btn btn-wide bg-gray-400 text-black" onClick={handleGoogleSignIn}><span><FaGoogle /></span>SignIn with Google</button>
-             <button className="btn btn-wide bg-gray-400 text-black" onClick={handleGithubSignIn}><span><FaGithub /></span>SignIn with Github</button>
+            
              </div>
             </form>
 

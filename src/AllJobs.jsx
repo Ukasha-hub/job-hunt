@@ -44,6 +44,7 @@ const AllJobs = () => {
                             <table className="w-full p-6 text-lg text-center whitespace-nowrap">
                                 <thead>
                                     <tr className="dark:bg-gray-300">
+                                        <th className="p-3">Photo</th>
                                         <th className="p-3">Job Title</th>
                                         <th className="p-3">Posting Date</th>
                                         <th className="p-3">Deadline</th>
@@ -55,6 +56,9 @@ const AllJobs = () => {
                                     {
                                         filteredJobs.map(job => (
                                             <tr key={job._id} className="">
+                                                <td className="px-3 py-2 w-40">
+                                                    <img src={job.photo} alt="" />
+                                                </td>
                                                 <td className="px-3 py-2 text-3xl">
                                                     <p>{job.job}</p>
                                                 </td>
