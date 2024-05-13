@@ -39,7 +39,7 @@ const Register = () => {
                 return
             }
             if(!/[a-z]/.test(password)){
-                toast.error("password should have atleast 1 uppercase letter");
+                toast.error("password should have atleast 1 lowercase letter");
                 return
             }
     

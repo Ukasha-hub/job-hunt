@@ -2,11 +2,13 @@ import { useContext, useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import Swal from 'sweetalert2'
 import { AuthContext } from "./AuthProvider";
+import { ToastContainer, toast } from 'react-toastify';
 
 
 
 const JobDetails = () => {
     const job= useLoaderData()
+    console.log(job._id)
     const {user}= useContext(AuthContext)
 
     // Convert date string to Date object
@@ -21,11 +23,24 @@ const currentDate = new Date();
         setCurrentTime(displayCurrentDate)
     },[])
 
-    const [applied, setApplied]=useState(true)
+    const [applied, setApplied]=useState(false)
    
 
     useEffect(() => {
-        setApplied(false);
+        fetch(`http://localhost:5000/applied/${user.email}`)
+            .then(res => res.json())
+            .then(data => {
+                data.map(d=>{
+                    if (d.job === job.job) {
+                        setApplied(true);
+                        return null
+                    }
+
+                })
+                 
+                })
+            
+            
     }, []);
 const handleApplyJob=e=>{
     e.preventDefault()
@@ -54,30 +69,18 @@ const handleApplyJob=e=>{
         .then(data=>{
             console.log(data);
             if(data.insertedId){
-              Swal.fire({
-                title: " Successful!",
-                text: "You have applied for job",
-                icon: "success"
-              });
+                toast.success("You have applied for the job")
               setApplied(true)
             }
             else {
-              Swal.fire({
-                  title: "Error!",
-                  text: "Failed to apply!",
-                  icon: "error"
-              });
+                toast.error("Failed to apply")
           }
             
             
         })
         .catch(error => {
           console.error('Error apply:', error);
-          Swal.fire({
-              title: "Error!",
-              text: "Failed apply!",
-              icon: "error"
-          });
+          toast.error("Failed to apply")
       });
 }    
 
@@ -170,6 +173,7 @@ const handleApplyJob=e=>{
 		<img src={job.photo} alt="" className="object-cover w-full rounded-md xl:col-span-3 dark:bg-gray-500" />
 	</div>
 </section>
+<ToastContainer /> 
        </div>
       
        

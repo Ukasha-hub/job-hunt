@@ -11,7 +11,7 @@ import AuthProvider from './AuthProvider.jsx';
 import Register from './Register.jsx';
 
 
-import UserTouristSpot from './UserTouristSpot.jsx';
+
 import UpdateTouristSpot from './UpdateTouristSpot.jsx';
 import PrivateRoute from './PrivateRoute.jsx';
 
@@ -22,6 +22,7 @@ import AddJob from './AddJob.jsx';
 import AllJobs from './AllJobs.jsx';
 import JobDetails from './JobDetails.jsx';
 import AppliedJobs from './AppliedJobs.jsx';
+import UserJob from './UserJob.jsx';
 
 const router = createBrowserRouter([
   {
@@ -55,9 +56,9 @@ const router = createBrowserRouter([
         loader: ()=> fetch('http://localhost:5000/jobs')
       },
       {
-        path: '/userSpot',
-        element: <PrivateRoute><UserTouristSpot></UserTouristSpot></PrivateRoute>,
-        loader: ()=> fetch('http://localhost:5000/jobs')
+        path: '/userJob/:email',
+        element: <PrivateRoute><UserJob></UserJob></PrivateRoute>,
+        loader: ({params})=> fetch(`http://localhost:5000/jobs/email/${params.email}`)
       },
       {
         path:'/userSpot/updateSpot/:id',

@@ -111,13 +111,19 @@ const Navbar3 = () => {
                 <li ><NavLink to='/userSpot'>blog</NavLink></li>
                 <li ><NavLink to='/addSpot'>Add Tourist Spot</NavLink></li>
                 
-                <li ><NavLink to='/userSpot'>My Tourist Spot</NavLink></li>
+                
                 
                 {
                   user?
                   (<li><NavLink to={`/applied/${user.email}`}>Applied Jobs</NavLink></li>)
                   :
                   (<li>Applied Jobs</li>)
+                }
+                {
+                  user?
+                  (<li ><NavLink to={`/userJob/${user.email}`}>Posted Job</NavLink></li>)
+                  :
+                  (<li>Posted Jobs</li>)
                 }
                 <li><NavLink to='/userSpot'>My Tourist Spot</NavLink></li>
 			<li>
