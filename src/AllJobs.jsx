@@ -56,7 +56,7 @@ const AllJobs = () => {
                                         filteredJobs.map(job => (
                                             <tr key={job._id} className="">
                                                 <td className="px-3 py-2 text-3xl">
-                                                    <p>{job.job},{job._id}</p>
+                                                    <p>{job.job}</p>
                                                 </td>
                                                 <td className="px-3 py-2">
                                                     <p className="">{job.post}</p>

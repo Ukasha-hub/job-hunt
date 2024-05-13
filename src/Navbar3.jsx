@@ -107,9 +107,9 @@ const Navbar3 = () => {
 	<div className="divide-y dark:divide-gray-300">
 		<ul  className="pt-2 pb-4 space-y-1 text-sm flex lg:flex-row md:flex-row flex-col  justify-evenly menu menu-horizontal px-1">
         <li ><NavLink to='/'>Home</NavLink></li>
-                <li ><NavLink to='/allSpot'>All Tourist Spot</NavLink></li>
+                <li ><NavLink to='/allSpot'>All Jobs</NavLink></li>
                 <li ><NavLink to='/userSpot'>blog</NavLink></li>
-                <li ><NavLink to='/addSpot'>Add Tourist Spot</NavLink></li>
+                <li ><NavLink to='/addSpot'>Add Jobs</NavLink></li>
                 
                 
                 
@@ -117,15 +117,15 @@ const Navbar3 = () => {
                   user?
                   (<li><NavLink to={`/applied/${user.email}`}>Applied Jobs</NavLink></li>)
                   :
-                  (<li>Applied Jobs</li>)
+                  (<li><NavLink to={`/signIn`}>Applied Jobs</NavLink></li>)
                 }
                 {
                   user?
                   (<li ><NavLink to={`/userJob/${user.email}`}>Posted Job</NavLink></li>)
                   :
-                  (<li>Posted Jobs</li>)
+                  (<li><NavLink to={`/signIn`}>Posted Job</NavLink></li>)
                 }
-                <li><NavLink to='/userSpot'>My Tourist Spot</NavLink></li>
+                <li><NavLink to='/updateProfile'>My Profile</NavLink></li>
 			<li>
             {
                     user?

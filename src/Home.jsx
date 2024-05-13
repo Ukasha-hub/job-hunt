@@ -2,6 +2,8 @@
 // Import Swiper React components
 
 import { Helmet } from 'react-helmet';
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import 'react-tabs/style/react-tabs.css';
 
 
 
@@ -13,10 +15,7 @@ import { Helmet } from 'react-helmet';
 import { Link, useLoaderData } from 'react-router-dom';
 import {  useState } from 'react';
 
-import { ImPriceTag } from "react-icons/im";
-import { FaUserGroup } from "react-icons/fa6";
-import { FaPlaneCircleCheck } from "react-icons/fa6";
-import { FaCloudSun } from "react-icons/fa";
+
 
 
 
@@ -33,9 +32,9 @@ const Home = () => {
   
     
    
-   const spots= useLoaderData()
-   const [firstSixSpots, setFirstSixSpots] = useState(spots.slice(0, 6));
-   console.log(setFirstSixSpots)
+   const jobs= useLoaderData()
+   const [firstSixJobs, setFirstSixJobs] = useState(jobs.slice(0, 6));
+  
 
 
 
@@ -50,60 +49,100 @@ const Home = () => {
             <>
                
             </>
+            
              
-             <div className='border-b-2'>
+             <div className=''>
              <h1 className=' rounded-xl p-5 mb-5 mt-5 text-4xl font-bold flex justify-center'>Your Next Tour </h1>
              </div>
 
-             <div className='flex justify-end p-5'><Link to={'/allSpot'}><button className='btn btn-lg'> See All Tourist Spots</button></Link></div>
+             <Tabs>
+    <TabList>
+      <Tab>All</Tab>
+      <Tab>Title 2</Tab>
+    </TabList>
 
-             <div className='grid lg:grid-cols-3 md:grid-cols-2  grid-cols-1 gap-10 justify-center content-center justify-items-center p-5'>
+    <TabPanel>
+      <>
+      <div className='grid lg:grid-cols-3 md:grid-cols-2  grid-cols-1 gap-10 justify-center content-center justify-items-center p-5'>
              {
-                        firstSixSpots.map(spot => (
-                            <div key={spot._id} className="card card-compact lg:w-[30vw] w-[350px] bg-base-100 border-2 shadow-xl">
-                                <figure><img className='h-[300px]' src={spot.photo} alt="Shoes" /></figure>
+                        firstSixJobs.map(job => (
+                            <div key={job._id} className="card card-compact lg:w-[30vw] w-[350px] bg-base-100  shadow-xl">
+                                <figure><img className='h-[300px]' src={job.photo} alt="Shoes" /></figure>
                                 <div className="card-body">
-                                    <h2 className="card-title text-3xl">{spot.spot}</h2>
-                                    <div className="border-2 rounded-xl flex flex-col justify-center content-center justify-items-center items-center gap-3 p-3 text-lg">
-                                    <div className="flex flex-row">
-                                    <ImPriceTag />
-                                    <p>Average Cost: {spot.cost}</p>
+                                    <h2 className="card-title text-3xl">{job.job}</h2>
+                                    <div className=" rounded-xl flex flex-col  gap-3 p-3 text-lg pl-5">
+                                    <div className="flex flex-row ">
+                                   
+                                    <p>Salary Range: {job.salary}</p>
                                     </div>
                                     <div className="flex flex-row">
-                                    <FaUserGroup />
-                                    <p>Total Visitors/Year: {spot.visitor}</p>
+                                   
+                                    <p>Job Type: {job.category}</p>
                                     </div>
                                     <div className="flex flex-row"> 
-                                    <FaPlaneCircleCheck />
-                                    <p>Travel Time: {spot.time}</p>
+                                   
+                                    <p>Application deadline: {job.deadline}</p>
                                     </div>
-                                    <div className="flex flex-row">
-                                    <FaCloudSun />
-                                    <p>Seasonality: {spot.seasonality}</p>
+                                    
                                     </div>
-                                    </div>
-                                    <div className="card-actions justify-center">
+                                    <div className="card-actions justify-end">
                                         
-                                        <Link to={`/details/${spot._id}`}><button className="btn btn-primary">Details</button></Link>
+                                        <Link to={`/details/${job._id}`}><button className="btn btn-primary">Details</button></Link>
                                     </div>
                                 </div>
                             </div>
                         ))
                     }
              </div>
+      </>
+    </TabPanel>
+    <>
+      <div className='grid lg:grid-cols-3 md:grid-cols-2  grid-cols-1 gap-10 justify-center content-center justify-items-center p-5'>
+             {
+                        firstSixJobs.map(job => (
 
-
-             <div className='border-b-2'>
-             <h1 className=' rounded-xl p-5 mb-5 mt-5 text-4xl font-bold flex justify-center' >
-              Lets Go to 
-              <span style={{fontWeight: 'bold', color:'green', marginLeft: '10px'}}>
-                
-              </span>
-              <span style={{color:'red'}}>
-                
-              </span>
-              </h1>
+                          
+                          
+                            <div key={job._id} className="card card-compact lg:w-[30vw] w-[350px] bg-base-100  shadow-xl">
+                                <figure><img className='h-[300px]' src={job.photo} alt="Shoes" /></figure>
+                                <div className="card-body">
+                                    <h2 className="card-title text-3xl">{job.job}</h2>
+                                    <div className=" rounded-xl flex flex-col  gap-3 p-3 text-lg pl-5">
+                                    <div className="flex flex-row ">
+                                   
+                                    <p>Salary Range: {job.salary}</p>
+                                    </div>
+                                    <div className="flex flex-row">
+                                   
+                                    <p>Job Type: {job.category}</p>
+                                    </div>
+                                    <div className="flex flex-row"> 
+                                   
+                                    <p>Application deadline: {job.deadline}</p>
+                                    </div>
+                                    
+                                    </div>
+                                    <div className="card-actions justify-end">
+                                        
+                                        <Link to={`/details/${job._id}`}><button className="btn btn-primary">Details</button></Link>
+                                    </div>
+                                </div>
+                            </div>
+                        ))
+                    }
              </div>
+      </>
+    <TabPanel>
+      <h2>Any content 2</h2>
+    </TabPanel>
+  </Tabs>
+
+             <div className='flex justify-end p-5'><Link to={'/allSpot'}><button className='btn btn-lg'> See All Tourist Spots</button></Link></div>
+
+             
+
+
+             
 
              
 
@@ -151,13 +190,7 @@ const Home = () => {
                   </div>
                   </div>
                   
-              <h1 className="text-2xl lg:text-5xl font-extrabold mb-20">Our Sponsors</h1>
-              <ul className="flex justify-evenly gap-10 mt-5">
-                <li className='w-[200px]'><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSyrlc-WJdVubK0pMdeXEjynDZym27ZIwT4NTTo3L3yHg&s" alt="" /></li>
-                <li className='w-[200px]'><img src="https://i.pinimg.com/736x/fc/04/c9/fc04c9b11b17b9a7ce2714428fce770e.jpg" alt="" /></li>
-                <li className='w-[200px]'><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvASCGDW013BP734YvdrC5IglsD0AdYu9q8WECi108&s" alt="" /></li>
-               
-              </ul>
+              
             </div>
              
 

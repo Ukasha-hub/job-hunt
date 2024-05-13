@@ -12,7 +12,7 @@ import Register from './Register.jsx';
 
 
 
-import UpdateTouristSpot from './UpdateTouristSpot.jsx';
+
 import PrivateRoute from './PrivateRoute.jsx';
 
 import Home from './Home.jsx';
@@ -23,6 +23,8 @@ import AllJobs from './AllJobs.jsx';
 import JobDetails from './JobDetails.jsx';
 import AppliedJobs from './AppliedJobs.jsx';
 import UserJob from './UserJob.jsx';
+import UpdateJob from './UpdateJob.jsx';
+import UpdateProfile from './UpdateProfile.jsx';
 
 const router = createBrowserRouter([
   {
@@ -61,8 +63,8 @@ const router = createBrowserRouter([
         loader: ({params})=> fetch(`http://localhost:5000/jobs/email/${params.email}`)
       },
       {
-        path:'/userSpot/updateSpot/:id',
-        element: <PrivateRoute><UpdateTouristSpot></UpdateTouristSpot></PrivateRoute>,
+        path:'/userJob/updateJob/:id',
+        element: <PrivateRoute><UpdateJob></UpdateJob></PrivateRoute>,
         loader: ({params})=> fetch(`http://localhost:5000/jobs/${params.id}`)
       },
       {
@@ -74,6 +76,11 @@ const router = createBrowserRouter([
         path:'/applied/:email',
         element:<PrivateRoute><AppliedJobs></AppliedJobs></PrivateRoute>,
         loader: ({params})=> fetch(`http://localhost:5000/applied/${params.email}`)
+      },
+      {
+        path:'/updateProfile',
+        element:<PrivateRoute><UpdateProfile></UpdateProfile></PrivateRoute>,
+        
       },
 
       

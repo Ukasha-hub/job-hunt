@@ -7,7 +7,7 @@ const Navbar = () => {
 
     return (
         <div>
-        <div className="navbar flex justify-between  bg-gray-300">
+        <div className="navbar flex justify-between  bg-gray-100">
            
 
 

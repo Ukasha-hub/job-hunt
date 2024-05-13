@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
-import Swal from 'sweetalert2'
+
 import { AuthContext } from "./AuthProvider";
 import { ToastContainer, toast } from 'react-toastify';
 
