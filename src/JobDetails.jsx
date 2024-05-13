@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 
 import { AuthContext } from "./AuthProvider";
 import { ToastContainer, toast } from 'react-toastify';
@@ -18,6 +18,9 @@ const dateFromMongoDB = new Date(job.deadline);
 const currentDate = new Date();
 
     const [currentTime, setCurrentTime]= useState(new Date())
+    const [updateApplicant, setupdateApplicant]= useState(job.applicant+1)
+    console.log(updateApplicant)
+    const navigate= useNavigate()
     useEffect(()=>{
         var displayCurrentDate= `${currentTime.getDate()}-${currentTime.getMonth()}-${currentTime.getFullYear()}`
         setCurrentTime(displayCurrentDate)
@@ -42,7 +45,7 @@ const currentDate = new Date();
             
             
     }, []);
-const handleApplyJob=e=>{
+const handleApplyJob=(e,id)=>{
     e.preventDefault()
     const form= e.target
     const cv= form.cv.value;
@@ -52,11 +55,16 @@ const handleApplyJob=e=>{
     
     
     const post= form.post.value;
-    
+    const photo= form.photo.value;
+    const salary= form.salary.value;
+        const description= form.description.value;
+        const deadline= form.deadline.value;
     
     const email= form.email.value;
     const name= form.name.value;
+    const applicant = parseInt(form.applicant.value)
     const applyJob= {cv, job, category,  post,  email, name}
+    const updateApplicant= {photo, salary, description, deadline, job, category,applicant}
 
     fetch('http://localhost:5000/applied',{
             method: "POST",
@@ -71,10 +79,14 @@ const handleApplyJob=e=>{
             if(data.insertedId){
                 toast.success("You have applied for the job")
               setApplied(true)
+              navigate(`/details/${id}`)
+              
+              
             }
             else {
                 toast.error("Failed to apply")
           }
+          
             
             
         })
@@ -82,6 +94,14 @@ const handleApplyJob=e=>{
           console.error('Error apply:', error);
           toast.error("Failed to apply")
       });
+
+      fetch(`http://localhost:5000/jobs/${id}`,{
+            method: "PUT",
+            headers:{
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(updateApplicant)
+        })
 }    
 
     return (
@@ -120,7 +140,7 @@ const handleApplyJob=e=>{
                 <dialog id="my_modal_1" className="modal">
                 <div className="modal-box  bg-white">
                     <h3 className="font-bold text-lg">Add CV link to apply</h3>
-                    <form onSubmit={handleApplyJob} className="card-body space-y-3 t" >
+                    <form onSubmit={(e)=>handleApplyJob(e, job._id )} className="card-body space-y-3 t" >
                             <div className="flex  flex-col">
                             <div className="form-control  ">
                             <label className="label">
@@ -144,7 +164,27 @@ const handleApplyJob=e=>{
                             </div>
                             <div className="form-control">
                             
+                            <input type="hidden" name='applicant' value={updateApplicant} className="input input-bordered bg-white" required />
+                            </div>
+                            <div className="form-control">
+                            
                             <input type="hidden" name='category' value={job.category} className="input input-bordered bg-white" required />
+                            </div>
+                            <div className="form-control">
+                            
+                            <input type="hidden" name='photo' value={job.photo} className="input input-bordered bg-white" required />
+                            </div>
+                            <div className="form-control">
+                            
+                            <input type="hidden" name='salary' value={job.salary} className="input input-bordered bg-white" required />
+                            </div>
+                            <div className="form-control">
+                            
+                            <input type="hidden" name='description' value={job.description} className="input input-bordered bg-white" required />
+                            </div>
+                            <div className="form-control">
+                            
+                            <input type="hidden" name='deadline' value={job.deadline} className="input input-bordered bg-white" required />
                             </div>
                             <div className="form-control mt-6">
                             <div className="form-control">

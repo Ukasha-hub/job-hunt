@@ -17,10 +17,11 @@ const UpdateJob = () => {
         const category= form.category.value;
         const salary= form.salary.value;
         const description= form.description.value;
-        const post= form.post.value;
+        
+        const applicant= form.applicant.value;
         const deadline= form.deadline.value;
         
-        const UpdatedJob= {photo, job, category, salary, description, post, deadline}
+        const UpdatedJob= {photo, job, category, salary, description, deadline, applicant}
         //send data to mongodb
         console.log('inside func:', id)
         fetch(`http://localhost:5000/jobs/${id}`,{
@@ -120,6 +121,10 @@ const UpdateJob = () => {
                   <span className="label-text-bold">Application Deadline</span>
                 </label>
                 <input type="date" name='deadline' placeholder="" defaultValue={job.deadline} className="input input-bordered" required />
+              </div>
+              <div className="form-control">
+                
+                <input type="hidden" name='applicant' placeholder="" value={job.applicant} className="input input-bordered" required />
               </div>
              
               <div className="form-control mt-6">

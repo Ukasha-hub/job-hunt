@@ -39,7 +39,7 @@ const UserJob = () => {
       
                   
                 });
-                navigate(`/userJob`)
+                navigate(`/userJob/${jobs.email}`)
               }
               else {
                 Swal.fire({
