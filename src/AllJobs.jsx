@@ -1,17 +1,33 @@
+import { useQuery } from "@tanstack/react-query";
 import  { useEffect, useState } from "react";
-import { Link, useLoaderData } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const AllJobs = () => {
-    const jobs = useLoaderData();
+    //const jobs = useLoaderData();
+
+    const {isLoading, isError, data: jobs}= useQuery({
+        queryKey: ['jobs'],
+        queryFn: async ()=>{
+            const res = await fetch('http://localhost:5000/jobs')
+            return res.json()
+        }
+    })
+
+    console.log(jobs)
+
+    
 
     const [loading, setLoading] = useState(true);
     const [searchQuery, setSearchQuery] = useState('');
     const [filteredJobs, setFilteredJobs] = useState([]);
 
     useEffect(() => {
-        setFilteredJobs(jobs); 
-        setLoading(false);
-    }, [jobs]);
+        if (!isLoading && !isError){
+            setFilteredJobs(jobs); 
+            setLoading(false);
+        }
+        
+    }, [jobs, isLoading, isError]);
 
     
     const handleSearchChange = (e) => {
@@ -24,6 +40,16 @@ const AllJobs = () => {
         const filtered = jobs.filter(job => job.job.toLowerCase().includes(query.toLowerCase()));
         setFilteredJobs(filtered);
     };
+
+    
+
+    if (isLoading) {
+        return <span className="loading loading-spinner loading-lg text-5xl text-center flex justify-center content-center items-center justify-contents-center"></span>;
+    }
+
+    if (isError) {
+        return <div>Error fetching data</div>;
+    }
 
     return (
         <div>

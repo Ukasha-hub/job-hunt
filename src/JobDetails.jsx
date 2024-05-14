@@ -1,25 +1,43 @@
 import { useContext, useEffect, useState } from "react";
-import { useLoaderData, useNavigate } from "react-router-dom";
+import { useLoaderData, useNavigate, useParams } from "react-router-dom";
 
 import { AuthContext } from "./AuthProvider";
 import { ToastContainer, toast } from 'react-toastify';
+import { useQuery } from "@tanstack/react-query";
 
 
 
 const JobDetails = () => {
-    const job= useLoaderData()
-    console.log(job._id)
+    //const job= useLoaderData()
+   // console.log(job._id)
     const {user}= useContext(AuthContext)
 
-    // Convert date string to Date object
-const dateFromMongoDB = new Date(job.deadline);
 
-// Current date
-const currentDate = new Date();
+    const { id } = useParams(); 
+
+   
+    const fetchDetailJob = async () => {
+        const response = await fetch(`http://localhost:5000/jobs/${id}`)
+        if (!response.ok) {
+            throw new Error('Failed to fetch user jobs');
+        }
+        return response.json();
+    };
+ 
+    
+    const { isLoading, isError, data: job } = useQuery({queryKey:['job', id], queryFn:fetchDetailJob});
+
+     console.log(job)
+
+     const dateFromMongoDB = new Date(job?.deadline);
+
+     // Current date
+     const currentDate = new Date();
+     const [updateApplicant, setupdateApplicant]= useState(job?.applicant+1)
 
     const [currentTime, setCurrentTime]= useState(new Date())
-    const [updateApplicant, setupdateApplicant]= useState(job.applicant+1)
-    console.log(updateApplicant)
+    
+   // console.log(updateApplicant)
     const navigate= useNavigate()
     useEffect(()=>{
         var displayCurrentDate= `${currentTime.getDate()}-${currentTime.getMonth()}-${currentTime.getFullYear()}`
@@ -34,7 +52,7 @@ const currentDate = new Date();
             .then(res => res.json())
             .then(data => {
                 data.map(d=>{
-                    if (d.job === job.job) {
+                    if (d.job === job?.job) {
                         setApplied(true);
                         return null
                     }
@@ -102,7 +120,18 @@ const handleApplyJob=(e,id)=>{
             },
             body: JSON.stringify(updateApplicant)
         })
-}    
+}   
+
+if (isLoading) {
+    return <span className="loading loading-spinner loading-lg text-5xl text-center flex justify-center content-center items-center justify-contents-center"></span>;
+}
+
+if (isError) {
+    return <div>Error fetching data</div>;
+}
+
+    // Convert date string to Date object
+   
 
     return (
         <div>

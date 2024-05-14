@@ -1,9 +1,24 @@
+import { useQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
-import { Link, useLoaderData, useNavigate } from "react-router-dom";
+import { Link,  useNavigate, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const UserJob = () => {
-    const jobs = useLoaderData();
+   // const jobs = useLoaderData();
+
+   const { email } = useParams(); 
+
+   
+   const fetchUserJobs = async () => {
+       const response = await fetch(`http://localhost:5000/jobs/email/${email}`);
+       if (!response.ok) {
+           throw new Error('Failed to fetch user jobs');
+       }
+       return response.json();
+   };
+
+   
+   const { isLoading, isError, data: jobs } = useQuery({queryKey:['jobs', email], queryFn:fetchUserJobs});
 
     const [loading, setLoading]=useState(true)
 
@@ -60,6 +75,14 @@ const UserJob = () => {
           }
         });
       }
+
+      if (isLoading) {
+        return <span className="loading loading-spinner loading-lg text-5xl text-center flex justify-center content-center items-center justify-contents-center"></span>;
+    }
+
+    if (isError) {
+        return <div>Error fetching data</div>;
+    }
     return (
         <div>
         {

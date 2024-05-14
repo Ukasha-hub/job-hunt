@@ -1,9 +1,24 @@
 
-import {  useLoaderData, useNavigate } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
+import {   useNavigate, useParams } from "react-router-dom";
 import Swal from 'sweetalert2'
 
 const UpdateJob = () => {
-    const job= useLoaderData()
+    //const job= useLoaderData()
+
+    const { id } = useParams(); 
+
+   
+   const fetchUpdateJob = async () => {
+       const response = await fetch(`http://localhost:5000/jobs/${id}`);
+       if (!response.ok) {
+           throw new Error('Failed to fetch user jobs');
+       }
+       return response.json();
+   };
+
+   
+   const { isLoading, isError, data: job } = useQuery({queryKey:['job', id], queryFn:fetchUpdateJob});
 
     const navigate= useNavigate()
     
@@ -62,6 +77,14 @@ const UpdateJob = () => {
       });
        
     }
+
+    if (isLoading) {
+      return <span className="loading loading-spinner loading-lg text-5xl text-center flex justify-center content-center items-center justify-contents-center"></span>;
+  }
+
+  if (isError) {
+      return <div>Error fetching data</div>;
+  }
     return (
         <div className="hero min-h-screen bg-base-200">
         <div className="hero-content flex-col ">

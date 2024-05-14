@@ -1,10 +1,25 @@
 import { useEffect, useState } from "react";
-import { useLoaderData } from "react-router-dom";
-import { PDFViewer, PDFDownloadLink } from '@react-pdf/renderer';
+import {  useParams } from "react-router-dom";
+import {  PDFDownloadLink } from '@react-pdf/renderer';
 import MyDocument from "./MyDocument";
+import { useQuery } from "@tanstack/react-query";
 
 const AppliedJobs = () => {
-    const jobs = useLoaderData();
+    //const jobs = useLoaderData();
+
+    const { email } = useParams(); 
+
+   
+   const fetchAppliedJobs = async () => {
+       const response = await fetch(`http://localhost:5000/applied/${email}`)
+       if (!response.ok) {
+           throw new Error('Failed to fetch user jobs');
+       }
+       return response.json();
+   };
+
+   
+   const { isLoading, isError, data: jobs } = useQuery({queryKey:['jobs', email], queryFn:fetchAppliedJobs});
 
     const [loading, setLoading] = useState(true);
     const [filter, setFilter] = useState("All"); 
@@ -17,7 +32,15 @@ const AppliedJobs = () => {
     const filteredJobs = filter === "All" ? jobs : jobs.filter(job => job.category === filter);
 
     
-    const jobCategories = [...new Set(jobs.map(job => job.category))];
+    const jobCategories = [...new Set(jobs?.map(job => job.category))];
+
+    if (isLoading) {
+        return <span className="loading loading-spinner loading-lg text-5xl text-center flex justify-center content-center items-center justify-contents-center"></span>;
+    }
+
+    if (isError) {
+        return <div>Error fetching data</div>;
+    }
 
     return (
         <div>
