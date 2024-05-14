@@ -42,7 +42,7 @@ const router = createBrowserRouter([
       {
         path:"/",
         element:<Home></Home>,
-        loader: ()=> fetch('http://localhost:5000/jobs')
+        
       },
 
       {
@@ -77,7 +77,7 @@ const router = createBrowserRouter([
       {
         path:'/details/:id',
         element:<PrivateRoute><JobDetails></JobDetails></PrivateRoute>,
-        loader: ({params})=> fetch(`http://localhost:5000/jobs/${params.id}`)
+        
       },
       {
         path:'/applied/:email',

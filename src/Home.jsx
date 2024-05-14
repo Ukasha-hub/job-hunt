@@ -14,6 +14,7 @@ import 'react-tabs/style/react-tabs.css';
 
 import { Link, useLoaderData } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { useQuery } from '@tanstack/react-query';
 
 
 
@@ -33,14 +34,30 @@ const Home = () => {
   
     
    
-   const jobs= useLoaderData()
+   //const jobs= useLoaderData()
+
+
+   const {isLoading, isError, data: jobs}= useQuery({
+    queryKey: ['jobs'],
+    queryFn: async ()=>{
+        const res = await fetch('http://localhost:5000/jobs')
+        return res.json()
+    }
+})
    
   
 
 
 
 
-    //console.log(country)
+if (isLoading) {
+  return <span className="loading loading-spinner loading-lg text-5xl text-center flex justify-center content-center items-center justify-contents-center"></span>;
+}
+
+if (isError) {
+  return <div>Error fetching data</div>;
+}
+
    
    
 
