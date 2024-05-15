@@ -38,7 +38,7 @@ const UpdateJob = () => {
         
         const UpdatedJob= {photo, job, category, salary, description, deadline, applicant}
         //send data to mongodb
-        console.log('inside func:', id)
+        //console.log('inside func:', id)
         fetch(`https://job-hunt-server-bice.vercel.app/jobs/${id}`,{
             method: "PUT",
             headers:{
@@ -49,7 +49,7 @@ const UpdateJob = () => {
   
         .then(res=>res.json())
         .then(data=>{
-            console.log(data);
+            //console.log(data);
             if(data.modifiedCount>0){
               Swal.fire({
                 title: " Successful!",

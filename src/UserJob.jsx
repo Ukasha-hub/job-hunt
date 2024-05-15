@@ -1,13 +1,14 @@
 import { useQuery } from "@tanstack/react-query";
-import {  useEffect, useState } from "react";
+import {  useContext, useEffect, useState } from "react";
 import { Link,  useNavigate, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
+import { AuthContext } from "./AuthProvider";
 
 
 const UserJob = () => {
    // const jobs = useLoaderData();
 
-   //const {user}= useContext(AuthContext)
+   const {user}= useContext(AuthContext)
 
    const { email } = useParams(); 
 
@@ -57,7 +58,7 @@ const UserJob = () => {
       
                   
                 });
-                navigate(`/userJob/${jobs.email}`)
+                navigate(`/userJob/${user.email}`)
               }
               else {
                 Swal.fire({

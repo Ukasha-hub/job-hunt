@@ -89,7 +89,7 @@ const AppliedJobs = () => {
                                         
                                                 
                                                 <PDFDownloadLink document={<MyDocument />} fileName="example.pdf">
-                                                {({ blob, url, loading, error }) =>
+                                                {({  loading }) =>
                                                     loading ? 'Loading document...' : <button className="btn border-black">  Download Summery </button>
                                                 }
                                                 </PDFDownloadLink>

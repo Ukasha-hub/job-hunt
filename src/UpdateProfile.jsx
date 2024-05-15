@@ -13,7 +13,7 @@ const UpdateProfile = () => {
 
     
 
-    console.log(user)
+   // console.log(user)
     
     const changeUserName=e=>{
         e.preventDefault();
@@ -28,7 +28,7 @@ const UpdateProfile = () => {
             displayName: username
         }) 
         .then(()=>{
-            console.log(user)
+         //   console.log(user)
             window.location.reload();
 
         })
@@ -51,7 +51,7 @@ const UpdateProfile = () => {
             photoURL: photo
         }) 
         .then(()=>{
-            console.log(user)
+         //   console.log(user)
             window.location.reload();
 
         })

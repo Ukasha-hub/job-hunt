@@ -12,7 +12,7 @@ import 'react-tabs/style/react-tabs.css';
 
 // import required modules
 
-import { Link, useLoaderData } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useQuery } from '@tanstack/react-query';
 
@@ -89,7 +89,7 @@ if (isError) {
       <Tab>All</Tab>
       <Tab>Onsite</Tab>
       <Tab>Remote</Tab>
-      <Tab>Part-time</Tab>
+      <Tab>Part-Time</Tab>
       <Tab>Hybrid</Tab>
     </TabList>
 
@@ -186,7 +186,7 @@ if (isError) {
     <>
     <div className='grid lg:grid-cols-3 md:grid-cols-2  grid-cols-1 gap-10 justify-center content-center justify-items-center p-5'>
         {jobs.map(job => (
-            job.category === 'Part-time' ? (
+            job.category === 'Part-Time' ? (
               <div key={job._id} className="">
               <div className="max-w-xs rounded-md shadow-md dark:bg-gray-50 dark:text-gray-800">
                 <img src={job.photo} alt="" className="object-cover object-center w-full rounded-t-md h-72 dark:bg-gray-500" />
@@ -287,7 +287,7 @@ if (isError) {
 					<path d="M232,246.857V16H16V416H54.4ZM48,48H200V233.143L48,377.905Z"></path>
 					<path d="M280,416h38.4L496,246.857V16H280ZM312,48H464V233.143L312,377.905Z"></path>
 				</svg>
-				<p className="px-6 py-1 text-lg italic">I wanted to take a moment to express my sincere gratitude for the exceptional experience I've had using your platform. As a job seeker, navigating the employment market can often feel overwhelming, but this website has truly been a game-changer for me.</p>
+				<p className="px-6 py-1 text-lg italic">I wanted to take a moment to express my sincere gratitude for the exceptional experience ve had using your platform. As a job seeker, navigating the employment market can often feel overwhelming, but this website has truly been a game-changer for me.</p>
 				<svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" className="absolute bottom-0 right-0 w-8 h-8 dark:text-gray-300">
 					<path d="M280,185.143V416H496V16H457.6ZM464,384H312V198.857L464,54.1Z"></path>
 					<path d="M232,16H193.6L16,185.143V416H232ZM200,384H48V198.857L200,54.1Z"></path>

@@ -27,7 +27,7 @@ const Register = () => {
             const username= form.get('username')
             const password= form.get('password')
             const photo= form.get('photo')
-            console.log(email, username, password, photo)
+            //console.log(email, username, password, photo)
 
 
             if(password.length<6){
@@ -45,7 +45,7 @@ const Register = () => {
     
              createUser(email,password)
              .then(result=>{
-                console.log(result.user)
+               // console.log(result.user)
                 
 
                 updateProfile(result.user,{
@@ -78,7 +78,7 @@ const Register = () => {
             
 
        <div className="flex lg:flex-row flex-col justify-center mb-5" >
-       <div className="lg:w-[40%] w-full flex flex-col gap-5 border-2 p-7 bg-slate-300/75">
+       <div className="lg:w-[40%] w-full flex flex-col gap-5 border-2 p-20 bg-slate-300/75 lg:rounded-full md:rounded-full" style={{backgroundImage:"url('https://static.vecteezy.com/system/resources/previews/006/891/146/non_2x/abstract-gradient-background-light-spring-color-perfect-for-design-wallpaper-promotion-presentation-website-banner-etc-illustration-background-vector.jpg')",backgroundSize:'cover', backgroundRepeat:'no-repeat'}}>
        <h1 className="flex justify-center font-bold text-3xl text-black">Join our club now</h1>
             <form onSubmit={handleRegister}>
             <div className="flex flex-col gap-5">

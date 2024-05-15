@@ -50,7 +50,7 @@ const Navbar3 = () => {
                       
                       :
                       <div title={user?.displayName?user.displayName: "No user"}>
-                          <img src="https://w7.pngwing.com/pngs/178/595/png-transparent-user-profile-computer-icons-login-user-avatars-thumbnail.png" /> 
+                          <img src="https://static.vecteezy.com/system/resources/thumbnails/002/318/271/small_2x/user-profile-icon-free-vector.jpg" /> 
                       </div>
 
                       

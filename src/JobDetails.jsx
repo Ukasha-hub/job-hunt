@@ -27,7 +27,7 @@ const JobDetails = () => {
     
     const { isLoading, isError, data: job } = useQuery({queryKey:['job', id], queryFn:fetchDetailJob});
 
-     console.log(job)
+     //console.log(job)
 
      const dateFromMongoDB = new Date(job?.deadline);
 
@@ -96,7 +96,7 @@ const handleApplyJob=(e,id)=>{
         })
         .then(res=>res.json())
         .then(data=>{
-            console.log(data);
+           // console.log(data);
             if(data.insertedId){
                 toast.success("You have applied for the job")
               setApplied(true)

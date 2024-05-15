@@ -30,8 +30,8 @@ const SignIn = () => {
    const handleGoogleSignIn=()=>{
         signInWithPopup(auth, googleProvider)
         .then(result=>{
-            const user=result.user
-            console.log(user)
+            //const user=result.user
+            //console.log(user)
             
             
               setTimeout(navigate(location?.state? location.state: '/'), 3000)  
@@ -39,7 +39,7 @@ const SignIn = () => {
             
         })
         .catch(error=>{
-            console.log(error, error.message)
+           // console.log(error, error.message)
             toast.error(error.message);
         })
    }
@@ -53,7 +53,7 @@ const SignIn = () => {
         const password= form.get('password')
         signIn(email,password)
         .then(result=>{
-            console.log(result.user)
+           console.log(result.user)
             Swal.fire({
                 title: " Successful!",
                 text: "You have logged in!",
@@ -74,8 +74,8 @@ const SignIn = () => {
         <div className="" >
              <Helmet><title>Sign In</title></Helmet>
            <div className="flex-flex-row" >
-           <div className="bg-slate-700/75 flex flex-col  gap-5 mb-5 py-10 lg:mx-[20vw]  border-y-2">
-            <h1 className="flex justify-center font-bold text-5xl ">Welcome Back</h1>
+           <div className="bg-slate-700/75 flex flex-col  gap-5 mb-5 py-10 lg:mx-[20vw] lg:rounded-full md:rounded-full  border-y-2" style={{backgroundImage:"url('https://img.freepik.com/free-vector/futuristic-background-design_23-2148503793.jpg?size=626&ext=jpg&ga=GA1.1.553209589.1715040000&semt=ais')",backgroundSize:'cover', backgroundRepeat:'no-repeat'}}>
+            <h1 className="flex justify-center font-bold text-5xl text-white">Welcome Back</h1>
              <p className="flex justify-center text text-gray-400 ">Enter to get unlimited access to data and information</p>
             <div className="flex justify-center">
             <div className=" lg:w-[40%] w-full">
