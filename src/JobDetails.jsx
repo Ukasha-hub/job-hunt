@@ -17,7 +17,7 @@ const JobDetails = () => {
 
    
     const fetchDetailJob = async () => {
-        const response = await fetch(`http://localhost:5000/jobs/${id}`)
+        const response = await fetch(`https://job-hunt-server-bice.vercel.app/jobs/${id}`)
         if (!response.ok) {
             throw new Error('Failed to fetch user jobs');
         }
@@ -48,7 +48,7 @@ const JobDetails = () => {
    
 
     useEffect(() => {
-        fetch(`http://localhost:5000/applied/${user.email}`)
+        fetch(`https://job-hunt-server-bice.vercel.app/applied/${user.email}`)
             .then(res => res.json())
             .then(data => {
                 data.map(d=>{
@@ -87,7 +87,7 @@ const handleApplyJob=(e,id)=>{
     const applyJob= {cv, job, category,  post,  email, name}
     const updateApplicant= {photo, salary, description, deadline, job, category,applicant}
 
-    fetch('http://localhost:5000/applied',{
+    fetch('https://job-hunt-server-bice.vercel.app/applied',{
             method: "POST",
             headers:{
                 'content-type': 'application/json'
@@ -116,7 +116,7 @@ const handleApplyJob=(e,id)=>{
           toast.error("Failed to apply")
       });
 
-      fetch(`http://localhost:5000/jobs/${id}`,{
+      fetch(`https://job-hunt-server-bice.vercel.app/jobs/${id}`,{
             method: "PUT",
             headers:{
                 'content-type': 'application/json'

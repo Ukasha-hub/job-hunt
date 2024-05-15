@@ -33,7 +33,7 @@ const AddJob = () => {
         const newJob= {photo, job, category, salary, description, post, deadline, applicant,  email, name}
         //send data to mongodb
 
-        fetch('http://localhost:5000/jobs',{
+        fetch('https://job-hunt-server-bice.vercel.app/jobs',{
             method: "POST",
             headers:{
                 'content-type': 'application/json'
@@ -43,7 +43,7 @@ const AddJob = () => {
 
         .then(res=>res.json())
         .then(data=>{
-            console.log(data);
+           // console.log(data);
             if(data.insertedId){
               Swal.fire({
                 title: " Successful!",

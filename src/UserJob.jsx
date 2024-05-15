@@ -13,7 +13,7 @@ const UserJob = () => {
 
    
    const fetchUserJobs = async () => {
-       const response = await fetch(`http://localhost:5000/jobs/email/${email}`, {credentials:'include'});
+       const response = await fetch(`https://job-hunt-server-bice.vercel.app/jobs/email/${email}`, {credentials:'include'});
        if (!response.ok) {
            throw new Error('Failed to fetch user jobs');
        }
@@ -31,7 +31,7 @@ const UserJob = () => {
 
     const navigate= useNavigate()
     const handleDelete= id=>{
-        console.log(id)
+        //console.log(id)
         Swal.fire({
           title: "Are you sure?",
           text: "You won't be able to revert this!",
@@ -43,12 +43,12 @@ const UserJob = () => {
         }).then((result) => {
           if (result.isConfirmed) {
             
-            fetch(`http://localhost:5000/jobs/${id}`,{
+            fetch(`https://job-hunt-server-bice.vercel.app/jobs/${id}`,{
               method: 'DELETE'
             })
             .then(res=>res.json())
             .then(data=>{
-              console.log(data)
+              //console.log(data)
               if(data.deletedCount>0){
                 Swal.fire({
                   title: "Deleted!",

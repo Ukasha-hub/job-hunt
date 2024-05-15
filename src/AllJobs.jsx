@@ -9,12 +9,12 @@ const AllJobs = () => {
     const {isLoading, isError, data: jobs}= useQuery({
         queryKey: ['jobs'],
         queryFn: async ()=>{
-            const res = await fetch('http://localhost:5000/jobs')
+            const res = await fetch('https://job-hunt-server-bice.vercel.app/jobs')
             return res.json()
         }
     })
 
-    console.log(jobs)
+    //console.log(jobs)
 
     
 

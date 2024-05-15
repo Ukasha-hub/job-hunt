@@ -14,7 +14,7 @@ const AppliedJobs = () => {
 
    
    const fetchAppliedJobs = async () => {
-       const response = await fetch(`http://localhost:5000/applied/${email}` , {credentials:'include'})
+       const response = await fetch(`https://job-hunt-server-bice.vercel.app/applied/${email}` , {credentials:'include'})
        if (!response.ok) {
            throw new Error('Failed to fetch user jobs');
        }

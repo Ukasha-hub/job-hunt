@@ -10,7 +10,7 @@ const UpdateJob = () => {
 
    
    const fetchUpdateJob = async () => {
-       const response = await fetch(`http://localhost:5000/jobs/${id}`);
+       const response = await fetch(`https://job-hunt-server-bice.vercel.app/jobs/${id}`);
        if (!response.ok) {
            throw new Error('Failed to fetch user jobs');
        }
@@ -39,7 +39,7 @@ const UpdateJob = () => {
         const UpdatedJob= {photo, job, category, salary, description, deadline, applicant}
         //send data to mongodb
         console.log('inside func:', id)
-        fetch(`http://localhost:5000/jobs/${id}`,{
+        fetch(`https://job-hunt-server-bice.vercel.app/jobs/${id}`,{
             method: "PUT",
             headers:{
                 'content-type': 'application/json'

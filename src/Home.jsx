@@ -40,7 +40,7 @@ const Home = () => {
    const {isLoading, isError, data: jobs}= useQuery({
     queryKey: ['jobs'],
     queryFn: async ()=>{
-        const res = await fetch('http://localhost:5000/jobs')
+        const res = await fetch('https://job-hunt-server-bice.vercel.app/jobs')
         return res.json()
     }
 })
@@ -283,12 +283,12 @@ if (isError) {
 	<div className="container mx-auto grid grid-cols-1 gap-8 lg:gap-20 md:px-10 md:pb-10 lg:grid-cols-2">
 		<div className="flex flex-col items-center mx-12 lg:mx-0 ">
 			<div className="relative text-center ">
-				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" className="absolute top-0 left-0 w-8 h-8 dark:text-gray-300">
+				<svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" className="absolute top-0 left-0 w-8 h-8 dark:text-gray-300">
 					<path d="M232,246.857V16H16V416H54.4ZM48,48H200V233.143L48,377.905Z"></path>
 					<path d="M280,416h38.4L496,246.857V16H280ZM312,48H464V233.143L312,377.905Z"></path>
 				</svg>
 				<p className="px-6 py-1 text-lg italic">I wanted to take a moment to express my sincere gratitude for the exceptional experience I've had using your platform. As a job seeker, navigating the employment market can often feel overwhelming, but this website has truly been a game-changer for me.</p>
-				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" className="absolute bottom-0 right-0 w-8 h-8 dark:text-gray-300">
+				<svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" className="absolute bottom-0 right-0 w-8 h-8 dark:text-gray-300">
 					<path d="M280,185.143V416H496V16H457.6ZM464,384H312V198.857L464,54.1Z"></path>
 					<path d="M232,16H193.6L16,185.143V416H232ZM200,384H48V198.857L200,54.1Z"></path>
 				</svg>
@@ -298,12 +298,12 @@ if (isError) {
 		</div>
 		<div className="flex flex-col items-center max-w-lg mx-12 lg:mx-0">
 			<div className="relative text-center">
-				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" className="absolute top-0 left-0 w-8 h-8 dark:text-gray-300">
+				<svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 512 512" className="absolute top-0 left-0 w-8 h-8 dark:text-gray-300">
 					<path fill="currentColor" d="M232,246.857V16H16V416H54.4ZM48,48H200V233.143L48,377.905Z"></path>
 					<path fill="currentColor" d="M280,416h38.4L496,246.857V16H280ZM312,48H464V233.143L312,377.905Z"></path>
 				</svg>
 				<p className="px-6 py-1 text-lg italic">Thanks to your website, I was able to find the perfect job opportunity that aligns with my skills, interests, and career goals. I am thrilled to embark on this new professional journey, and I owe a large part of my success to your platform.</p>
-				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" className="absolute bottom-0 right-0 w-8 h-8 dark:text-gray-300">
+				<svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 512 512" className="absolute bottom-0 right-0 w-8 h-8 dark:text-gray-300">
 					<path fill="currentColor" d="M280,185.143V416H496V16H457.6ZM464,384H312V198.857L464,54.1Z"></path>
 					<path fill="currentColor" d="M232,16H193.6L16,185.143V416H232ZM200,384H48V198.857L200,54.1Z"></path>
 				</svg>
