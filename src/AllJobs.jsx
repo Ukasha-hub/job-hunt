@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import  { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { FaSearch } from "react-icons/fa";
 
 const AllJobs = () => {
     //const jobs = useLoaderData();
@@ -55,9 +56,10 @@ const AllJobs = () => {
         <div>
             {
                 !loading ? (
-                    <div className="container p-2 mx-auto sm:p-4 dark:text-gray-800">
-                        <h2 className="mb-4 text-2xl font-semibold ">All Jobs</h2>
-                        <div className="flex items-center mb-4  justify-center">
+                    <div className="container p-2 mx-auto sm:p-4 ">
+                        <h2 className="mb-4 text-3xl flex justify-center font-semibold ">All Jobs</h2>
+                        <div className="flex items-center mb-4  space-x-3 justify-start">
+                        <FaSearch />
                             <input
                                 type="text"
                                 className="w-1/2 px-3 py-2 input input-bordered rounded-md "
@@ -67,7 +69,7 @@ const AllJobs = () => {
                             />
                         </div>
                         <div className="overflow-x-auto">
-                            <table className="w-full p-6 text-lg text-center whitespace-nowrap">
+                            <table className="w-full p-6 text-lg text-center whitespace-nowrap dark:text-black">
                                 <thead>
                                     <tr className="dark:bg-gray-300">
                                         <th className="p-3">Photo</th>

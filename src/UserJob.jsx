@@ -89,10 +89,10 @@ const UserJob = () => {
     return (
         <div>
         {
-            !loading?(<div className="container p-2 mx-auto sm:p-4 dark:text-gray-800">
-            <h2 className="mb-4 text-2xl font-semibold ">All Jobs</h2>
+            !loading?(<div className="container p-2 mx-auto sm:p-4 ">
+            <h2 className="mb-4 text-3xl flex justify-center font-semibold ">Posted Jobs</h2>
             <div className="overflow-x-auto">
-                <table className=" w-full p-6 text-lg text-center whitespace-nowrap">
+                <table className=" w-full p-6 text-lg text-center whitespace-nowrap dark:text-black">
                     <thead>
                         <tr className="dark:bg-gray-300">
                             <th className="p-3">Job Title</th>

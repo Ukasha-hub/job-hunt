@@ -48,9 +48,9 @@ const AppliedJobs = () => {
     return (
         <div>
             {!loading ? (
-                <div className="container p-2 mx-auto sm:p-4 dark:text-gray-800">
-                    <h2 className="mb-4 text-2xl font-semibold ">All Jobs</h2>
-                    <div className="flex justify-center mb-4">
+                <div className="container p-2 mx-auto sm:p-4 ">
+                    <h2 className="mb-4 text-3xl flex justify-center font-semibold ">Applied Jobs</h2>
+                    <div className="flex justify-end mb-4">
                         <p>Filter By:</p>
                         <select value={filter}  onChange={e => setFilter(e.target.value)} className="mx-2 px-4 py-2 rounded-lg select select-bordered w-full max-w-xs text-gray-400">
                             <option value="All">All</option>
@@ -60,7 +60,7 @@ const AppliedJobs = () => {
                         </select>
                     </div>
                     <div className="overflow-x-auto">
-                        <table className="w-full p-6 text-lg text-center whitespace-nowrap">
+                        <table className="w-full p-6 text-lg text-center whitespace-nowrap dark:text-black">
                             <thead>
                                 <tr className="dark:bg-gray-300">
                                     <th className="p-3">Job Title</th>
@@ -70,7 +70,7 @@ const AppliedJobs = () => {
                                     <th className="p-3">Action</th>
                                 </tr>
                             </thead>
-                            <tbody className="border-b dark:bg-gray-50 dark:border-gray-300">
+                            <tbody className="border-b dark:bg-gray-50 dark:border-gray-300 ">
                                 {filteredJobs.map(job => (
                                     <tr key={job._id} className="">
                                         <td className="px-3 py-2 text-3xl">

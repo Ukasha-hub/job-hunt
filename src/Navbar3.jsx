@@ -131,11 +131,11 @@ const Navbar3 = () => {
                     user?
                     <button onClick={handleSignOut} className="btn">Sign Out</button>
                     :
-                    <div className="flex flex-row space-x-3">
+                   
                         <button className="btn lg:btn-md btn-sm">
                         <Link to='/signIn'>Sign In</Link></button>
                         
-                    </div>
+                    
                 }
 			</li>
 		</ul>
