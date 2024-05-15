@@ -33,11 +33,12 @@ const JobDetails = () => {
 
      // Current date
      const currentDate = new Date();
-     const [updateApplicant, setupdateApplicant]= useState(job?.applicant+1)
+     const [updateApplicant, setupdateApplicant]= useState(parseInt(job?.applicant)+1)
 
     const [currentTime, setCurrentTime]= useState(new Date())
-    
-   // console.log(updateApplicant)
+    //console.log(job.applicant)
+   // console.log(job.job)
+    console.log(updateApplicant)
     const navigate= useNavigate()
     useEffect(()=>{
         var displayCurrentDate= `${currentTime.getDate()}-${currentTime.getMonth()}-${currentTime.getFullYear()}`
@@ -103,14 +104,17 @@ const handleApplyJob=(e,id)=>{
               navigate(`/details/${id}`)
               
               
+              
             }
+            
             else {
                 toast.error("Failed to apply")
           }
           
-            
+          
             
         })
+        
         .catch(error => {
           console.error('Error apply:', error);
           toast.error("Failed to apply")

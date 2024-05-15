@@ -59,6 +59,7 @@ const UserJob = () => {
                   
                 });
                 navigate(`/userJob/${user.email}`)
+                window.location.reload();
               }
               else {
                 Swal.fire({
