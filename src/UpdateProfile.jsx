@@ -3,8 +3,7 @@ import { AuthContext } from "./AuthProvider";
 import { updateProfile } from "firebase/auth";
 import { ToastContainer, toast } from 'react-toastify';
 import { Helmet } from 'react-helmet';
-import Swal from 'sweetalert2'
-import { useEffect } from "react";
+
 
 
 
@@ -12,19 +11,7 @@ const UpdateProfile = () => {
     
     const {user}= useContext(AuthContext)
 
-    useEffect(() => {
-        const userLogIn = sessionStorage.getItem('LogIn');
-        if (user && !userLogIn) {
-          
-            sessionStorage.setItem('LogIn', true);
     
-          Swal.fire({
-            title: "Login Successful!",
-            text: "You have signed in!",
-            icon: "success"
-          });
-        }
-      }, []);
 
     console.log(user)
     

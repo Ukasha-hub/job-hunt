@@ -1,16 +1,19 @@
 import { useQuery } from "@tanstack/react-query";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link,  useNavigate, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
+import { AuthContext } from "./AuthProvider";
 
 const UserJob = () => {
    // const jobs = useLoaderData();
+
+   //const {user}= useContext(AuthContext)
 
    const { email } = useParams(); 
 
    
    const fetchUserJobs = async () => {
-       const response = await fetch(`http://localhost:5000/jobs/email/${email}`);
+       const response = await fetch(`http://localhost:5000/jobs/email/${email}`, {credentials:'include'});
        if (!response.ok) {
            throw new Error('Failed to fetch user jobs');
        }
@@ -81,7 +84,7 @@ const UserJob = () => {
     }
 
     if (isError) {
-        return <div>Error fetching data</div>;
+        return <div className="text-3xl">Forbidden Access</div>;
     }
     return (
         <div>

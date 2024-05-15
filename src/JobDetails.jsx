@@ -63,6 +63,9 @@ const JobDetails = () => {
             
             
     }, []);
+
+
+   
 const handleApplyJob=(e,id)=>{
     e.preventDefault()
     const form= e.target

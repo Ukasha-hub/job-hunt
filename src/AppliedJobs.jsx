@@ -1,17 +1,18 @@
-import { useEffect, useState } from "react";
-import {  useParams } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+
 import {  PDFDownloadLink } from '@react-pdf/renderer';
 import MyDocument from "./MyDocument";
 import { useQuery } from "@tanstack/react-query";
+import { AuthContext } from "./AuthProvider";
 
 const AppliedJobs = () => {
     //const jobs = useLoaderData();
 
-    const { email } = useParams(); 
+    const {user}= useContext(AuthContext)
 
    
    const fetchAppliedJobs = async () => {
-       const response = await fetch(`http://localhost:5000/applied/${email}`)
+       const response = await fetch(`http://localhost:5000/applied/${user.email}`)
        if (!response.ok) {
            throw new Error('Failed to fetch user jobs');
        }
@@ -19,7 +20,7 @@ const AppliedJobs = () => {
    };
 
    
-   const { isLoading, isError, data: jobs } = useQuery({queryKey:['jobs', email], queryFn:fetchAppliedJobs});
+   const { isLoading, isError, data: jobs } = useQuery({queryKey:['jobs', user.email], queryFn:fetchAppliedJobs});
 
     const [loading, setLoading] = useState(true);
     const [filter, setFilter] = useState("All"); 

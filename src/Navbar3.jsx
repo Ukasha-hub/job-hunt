@@ -121,7 +121,7 @@ const Navbar3 = () => {
                 }
                 {
                   user?
-                  (<li ><NavLink to={`/userJob/${user.email}`}>Posted Job</NavLink></li>)
+                  (<li ><NavLink to={`/userJob/${user.email}`}>Posted Jobs</NavLink></li>)
                   :
                   (<li><NavLink to={`/signIn`}>Posted Job</NavLink></li>)
                 }
