@@ -1,18 +1,20 @@
-import { useContext, useEffect, useState } from "react";
+import {  useEffect, useState } from "react";
 
 import {  PDFDownloadLink } from '@react-pdf/renderer';
 import MyDocument from "./MyDocument";
 import { useQuery } from "@tanstack/react-query";
-import { AuthContext } from "./AuthProvider";
+
+import { useParams } from "react-router-dom";
 
 const AppliedJobs = () => {
     //const jobs = useLoaderData();
 
-    const {user}= useContext(AuthContext)
+   
+    const { email } = useParams(); 
 
    
    const fetchAppliedJobs = async () => {
-       const response = await fetch(`http://localhost:5000/applied/${user.email}`)
+       const response = await fetch(`http://localhost:5000/applied/${email}` , {credentials:'include'})
        if (!response.ok) {
            throw new Error('Failed to fetch user jobs');
        }
@@ -20,7 +22,7 @@ const AppliedJobs = () => {
    };
 
    
-   const { isLoading, isError, data: jobs } = useQuery({queryKey:['jobs', user.email], queryFn:fetchAppliedJobs});
+   const { isLoading, isError, data: jobs } = useQuery({queryKey:['jobs', email], queryFn:fetchAppliedJobs});
 
     const [loading, setLoading] = useState(true);
     const [filter, setFilter] = useState("All"); 
@@ -40,7 +42,7 @@ const AppliedJobs = () => {
     }
 
     if (isError) {
-        return <div>Error fetching data</div>;
+        return <div className="text-3xl">Forbidden Access or Error Fetching Data</div>;
     }
 
     return (

@@ -1,8 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
-import { useContext, useEffect, useState } from "react";
+import {  useEffect, useState } from "react";
 import { Link,  useNavigate, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
-import { AuthContext } from "./AuthProvider";
+
 
 const UserJob = () => {
    // const jobs = useLoaderData();
@@ -84,7 +84,7 @@ const UserJob = () => {
     }
 
     if (isError) {
-        return <div className="text-3xl">Forbidden Access</div>;
+        return <div className="text-3xl">Forbidden Access or Error Fetching Data</div>;
     }
     return (
         <div>
