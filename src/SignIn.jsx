@@ -60,7 +60,7 @@ const SignIn = () => {
                 icon: "success"
               });
             
-         navigate(location?.state? location.state: '/')
+         navigate( '/')
             
         })
         .catch(error=>{

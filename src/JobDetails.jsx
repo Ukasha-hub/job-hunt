@@ -29,16 +29,21 @@ const JobDetails = () => {
 
      //console.log(job)
 
-     const dateFromMongoDB = new Date(job?.deadline);
+     
 
      // Current date
+
+     console.log(job)
+     
      const currentDate = new Date();
-     const [updateApplicant, setupdateApplicant]= useState(parseInt(job?.applicant)+1)
+     
+
+    
+
+    
 
     const [currentTime, setCurrentTime]= useState(new Date())
-    //console.log(job.applicant)
-   // console.log(job.job)
-    console.log(updateApplicant)
+   
     const navigate= useNavigate()
     useEffect(()=>{
         var displayCurrentDate= `${currentTime.getDate()}-${currentTime.getMonth()}-${currentTime.getFullYear()}`
@@ -49,11 +54,11 @@ const JobDetails = () => {
    
 
     useEffect(() => {
-        fetch(`https://job-hunt-server-bice.vercel.app/applied/${user.email}`)
+        fetch(`https://job-hunt-server-bice.vercel.app/applied`)
             .then(res => res.json())
             .then(data => {
                 data.map(d=>{
-                    if (d.job === job?.job) {
+                    if (d.job === job?.job && d.email===user.email) {
                         setApplied(true);
                         return null
                     }
@@ -101,7 +106,7 @@ const handleApplyJob=(e,id)=>{
             if(data.insertedId){
                 toast.success("You have applied for the job")
               setApplied(true)
-              navigate(`/details/${id}`)
+             
               
               
               
@@ -110,7 +115,7 @@ const handleApplyJob=(e,id)=>{
             else {
                 toast.error("Failed to apply")
           }
-          
+          navigate(`/details/${id}`)
           
             
         })
@@ -166,7 +171,7 @@ if (isError) {
 				</div>
                 </div>
                 {
-                    dateFromMongoDB > currentDate && job.email!==user.email?(<>
+                    new Date(job.deadline) > currentDate && job.email!==user.email?(<>
                     {
                         !applied?( <button className="btn w-full py-2 font-semibold rounded border-black" onClick={()=>document.getElementById('my_modal_1').showModal()}>Apply</button>):( <button className="btn w-full py-2 font-semibold rounded border-black" onClick={()=>document.getElementById('my_modal_1').showModal()} disabled>Appied</button>)
                     }</> ):(<p></p>)
@@ -199,8 +204,10 @@ if (isError) {
                             <input type="hidden" name='job' value={job.job} className="input input-bordered bg-white" required />
                             </div>
                             <div className="form-control">
+
+                                
                             
-                            <input type="hidden" name='applicant' value={updateApplicant} className="input input-bordered bg-white" required />
+                            <input type="hidden" name='applicant' value={job.applicant+1} className="input input-bordered bg-white" required />
                             </div>
                             <div className="form-control">
                             
@@ -228,7 +235,7 @@ if (isError) {
                             <input type="hidden" name='post' value={currentTime} className="input input-bordered bg-white" required />
                             </div>   
                             {
-                        !applied?( <button className="btn btn-primary">Apply</button>):( <button className="btn btn-primary" disabled>Applied</button>)
+                        !applied ?( <button className="btn btn-primary">Apply</button>):( <button className="btn btn-primary" disabled>Applied</button>)
                     }
                             
                             </div>

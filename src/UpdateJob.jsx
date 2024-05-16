@@ -89,7 +89,7 @@ const UpdateJob = () => {
         <div className="hero min-h-screen bg-base-200">
         <div className="hero-content flex-col ">
           <div className="text-center ">
-            <h1 className="text-5xl font-bold">Add a new Job</h1>
+            <h1 className="text-5xl font-bold">Update a Job</h1>
            
           </div>
           <div className="card shrink-0 w-full max-w-lg  shadow-2xl bg-slate-700/50">

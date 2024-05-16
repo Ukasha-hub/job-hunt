@@ -26,8 +26,8 @@ const AddJob = () => {
         const description= form.description.value;
         const post= form.post.value;
         const deadline= form.deadline.value;
-        const applicant= parseInt(form.applicant.value);
-        
+        const applicant= parseInt(form.applicant.value, 10);
+        console.log('number:', applicant)
         const email= form.email.value;
         const name= form.name.value;
         const newJob= {photo, job, category, salary, description, post, deadline, applicant,  email, name}
