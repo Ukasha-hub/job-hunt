@@ -4,9 +4,9 @@ Live link: vocal-platypus-b1b07b.netlify.app
 
 This is a job finding website where:
 
-- Users can login annd register
-- users can view jobs and details
-- users can apply for job
-- user can post job if he/she is an emloyer
+- Users can login and register
+- Users can view jobs and their details
+- users can apply for jobs
+- user can post job if he/she is an employer
 - user can change their profile
-- employers can update the job details, they also can delete
+- employers can update their job details, they also can delete their posted job
