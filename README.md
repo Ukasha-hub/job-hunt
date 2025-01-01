@@ -1,8 +1,12 @@
-# React + Vite
+# Job Hunt
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Live link: vocal-platypus-b1b07b.netlify.app (Security alert may show while visiting the website in chrome browser due having "Pdf downloading" feature. Try using other  browsers or disable danger flag warning of your chrome.)
 
-Currently, two official plugins are available:
+This is a job finding website where:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Users can login and register
+- Users can view jobs and their details
+- users can apply for jobs
+- user can post job if he/she is an employer
+- user can change their profile
+- employers can update their job details, they also can delete their posted job
