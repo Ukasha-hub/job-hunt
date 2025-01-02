@@ -1,5 +1,0 @@
-[[redirects]]
-from = "/*"
-to = "https://vocal-platypus-b1b07b.netlify.app/:splat"
-status = 301
-force = true

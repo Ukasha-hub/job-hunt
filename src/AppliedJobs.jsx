@@ -1,7 +1,7 @@
 import {  useEffect, useState } from "react";
 
-import {  PDFDownloadLink } from '@react-pdf/renderer';
-import MyDocument from "./MyDocument";
+
+
 import { useQuery } from "@tanstack/react-query";
 
 import { useParams } from "react-router-dom";
@@ -88,11 +88,7 @@ const AppliedJobs = () => {
                                         <td className="px-3 py-2">
                                         
                                                 
-                                                <PDFDownloadLink document={<MyDocument />} fileName="example.pdf">
-                                                {({  loading }) =>
-                                                    loading ? 'Loading document...' : <button className="btn border-black">  Download Summery </button>
-                                                }
-                                                </PDFDownloadLink>
+                                                
                                         </td>
                                     </tr>
                                 ))}
